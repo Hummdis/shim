@@ -219,6 +219,7 @@ def userdel(username, permanent=False):
         # RHEL, CentOS, and Amazon Linux:
         qexec(["/usr/bin/pkill", "-9", "-u", username])
         qexec(["/usr/sbin/userdel", username])
+        qexec(["/usr/sbin/groupdel", username])
         qexec(["/bin/mv", home_dir, removed_dir])
     else:
         qexec(["/usr/sbin/userdel", "-r", username])
